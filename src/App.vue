@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Vue boodschappenlijst"/>
   </div>
 </template>
 
@@ -12,6 +12,18 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+
+  methods: {
+    CalculatePrices() {
+      
+    }
+  },
+
+  data() {
+    return {
+      totalCost: 0,
+    }
   }
 }
 </script>

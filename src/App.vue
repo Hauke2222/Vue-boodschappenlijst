@@ -1,30 +1,47 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Vue boodschappenlijst"/>
+    <table><TableRow :grocery="GroceryObjectList[index]" msg="Vue boodschappenlijst" v-for="(n, index) in GroceryObjectList" :key="index"/></table>
+    <button @click="FillGroceryObjectList">Vul boodschappenlijst</button>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TableRow from './components/TableRow.vue'
+import Grocery from './grocery.js'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TableRow
   },
 
   methods: {
-    CalculatePrices() {
-      
+    FillGroceryObjectList() {
+      for (let i = 0; i < this.GroceryNamesPricesAndQuantities.length; i++) {
+        this.GroceryObjectList.push(
+          new Grocery(
+            this.GroceryNamesAndPrices[i].name, 
+            this.GroceryNamesPricesAndQuantities[i].price, 
+            this.GroceryNamesPricesAndQuantities[i].quantity
+          )
+        );
+      } 
     }
   },
 
   data() {
     return {
-      totalCost: 0,
+      GroceryObjectList: [],
+      GroceryNamesPricesAndQuantities: [
+        {'name': 'Brood', price: '1,00', quantity: 1},
+        {'name': 'Broccoli', price: '0,99', quantity: 1},
+        {'name': 'Krentenbollen', price: '1,20', quantity: 1},
+        {'name': 'Noten', price: '2,99', quantity: 1},
+      ],
     }
-  }
+  },
 }
 </script>
 

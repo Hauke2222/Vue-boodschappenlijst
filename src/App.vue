@@ -1,44 +1,54 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <table><TableRow :grocery="GroceryObjectList[index]" msg="Vue boodschappenlijst" v-for="(n, index) in GroceryObjectList" :key="index"/></table>
-    <button @click="FillGroceryObjectList">Vul boodschappenlijst</button>
-    
+    <table>
+      <!-- <TableRow :grocery="GroceryList[index]" msg="Vue boodschappenlijst" v-for="(n, index) in GroceryList" :key="index"/> -->
+      </table>
+    <div v-for="(g) in GroceryList" v-bind:key="g">
+      {{ 'Naam: ' + g.name + ', Prijs: ' + g.price + ', Aantal: ' + g.quantity}}
+    </div>
   </div>
 </template>
 
 <script>
-import TableRow from './components/TableRow.vue'
-import Grocery from './grocery.js'
+//import TableRow from './components/TableRow.vue'
+//import Grocery from './grocery.js'
 
 export default {
   name: 'App',
   components: {
-    TableRow
+    //TableRow
   },
 
   methods: {
-    FillGroceryObjectList() {
-      for (let i = 0; i < this.GroceryNamesPricesAndQuantities.length; i++) {
-        this.GroceryObjectList.push(
-          new Grocery(
-            this.GroceryNamesAndPrices[i].name, 
-            this.GroceryNamesPricesAndQuantities[i].price, 
-            this.GroceryNamesPricesAndQuantities[i].quantity
-          )
-        );
-      } 
+    // FillGroceryObjectList() {
+    //   for (let i = 0; i < this.GroceryList.length; i++) {
+    //     this.GroceryObjectList.push(
+    //       new Grocery(
+    //         this.GroceryNamesAndPrices[i].name, 
+    //         this.GroceryList[i].price, 
+    //         this.GroceryList[i].quantity
+    //       )
+    //     );
+    //   } 
+    // }
+    CalculateSubTotal() {
+      //this.GroceryList[i].quantity * this.GroceryList[i].price
+
+    },
+    CalculateTotal() {
+
     }
   },
 
   data() {
     return {
-      GroceryObjectList: [],
-      GroceryNamesPricesAndQuantities: [
-        {'name': 'Brood', price: '1,00', quantity: 1},
-        {'name': 'Broccoli', price: '0,99', quantity: 1},
-        {'name': 'Krentenbollen', price: '1,20', quantity: 1},
-        {'name': 'Noten', price: '2,99', quantity: 1},
+      //GroceryObjectList: [],
+      GroceryList: [
+        {name: 'Brood', price: '1,00', quantity: 1},
+        {name: 'Broccoli', price: '0,99', quantity: 1},
+        {name: 'Krentenbollen', price: '1,20', quantity: 1},
+        {name: 'Noten', price: '2,99', quantity: 1},
       ],
     }
   },

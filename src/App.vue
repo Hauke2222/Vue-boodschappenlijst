@@ -11,20 +11,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="g in GroceryList" v-bind:key="g">
-          <td>{{ g.name }}</td>
-          <td>{{ g.price }}</td>
-          <td>
-            <input
-              type="number"
-              pattern=" 0+\.[0-9]*[1-9][0-9]*$"
-              min="0"
-              v-bind:value="g.quantity"
-              @change="IncreaseQuantity()"
-            />
-          </td>
-          <td>{{ g.subTotal }}</td>
-        </tr>
+        <table-row
+          v-for="(g, index) in GroceryList"
+          v-bind:key="index"
+          v-model="GroceryList[index]"
+        />
         <tr>
           <td><b>Totaal:</b></td>
           <td>x</td>
@@ -39,18 +30,16 @@
 </template>
 
 <script>
-//import TableRow from './components/TableRow.vue'
+import TableRow from "./components/TableRow.vue";
 import Grocery from "./grocery.js";
 
 export default {
   name: "App",
   components: {
-    //TableRow
+    TableRow,
   },
 
   methods: {
-    IncreaseQuantity() { 
-    },
     CalculateTotal() {
       this.Totalprice = 0;
       for (let i = 0; i < this.GroceryList.length; i++) {
@@ -59,7 +48,7 @@ export default {
     },
   },
   created() {
-    console.log(this.GroceryList);
+    //console.log(this.GroceryList);
   },
 
   data() {
@@ -72,6 +61,12 @@ export default {
         new Grocery("Noten", "2,99", 1),
       ],
     };
+  },
+
+  props: {
+    value: {
+      type: Number,
+    },
   },
 };
 </script>

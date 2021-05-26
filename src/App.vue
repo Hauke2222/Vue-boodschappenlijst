@@ -18,10 +18,10 @@
         />
         <tr>
           <td><b>Totaal:</b></td>
-          <td>x</td>
+          <td>-</td>
           <td></td>
           <td id="totalCost">
-            <b>{{ Totalprice }}</b>
+            <b>{{ "€" + totalprice }}</b>
           </td>
         </tr>
       </tbody>
@@ -39,21 +39,12 @@ export default {
     TableRow,
   },
 
-  methods: {
-    CalculateTotal() {
-      this.Totalprice = 0;
-      for (let i = 0; i < this.GroceryList.length; i++) {
-        this.Totalprice += this.GroceryList[i].price;
-      }
-    },
-  },
-  created() {
-    //console.log(this.GroceryList);
-  },
+  methods: {},
+  created() {},
 
   data() {
     return {
-      Totalprice: 999,
+      totalprice: 0,
       GroceryList: [
         new Grocery("Brood", "1,00", 1),
         new Grocery("Broccoli", "0,99", 1),
@@ -61,12 +52,6 @@ export default {
         new Grocery("Noten", "2,99", 1),
       ],
     };
-  },
-
-  props: {
-    value: {
-      type: Number,
-    },
   },
 };
 </script>

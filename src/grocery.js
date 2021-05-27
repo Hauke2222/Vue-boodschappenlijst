@@ -3,8 +3,6 @@ export default class Grocery {
     this.name = name;
     this.price = price;
     this.quantity = quantity;
+    this.subTotal = (this.price * this.quantity).toFixed(2);
   }
-  // get subTotal() {
-  //     return parseFloat(this.price.replace(',', '.').slice(1)) * parseInt(this.quantity)
-  // }
 }

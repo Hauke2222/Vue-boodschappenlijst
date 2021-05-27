@@ -46,10 +46,10 @@ export default {
     return {
       totalprice: 0,
       GroceryList: [
-        new Grocery("Brood", "1,00", 1),
-        new Grocery("Broccoli", "0,99", 1),
-        new Grocery("Krentenbollen", "1,20", 1),
-        new Grocery("Noten", "2,99", 1),
+        new Grocery("Brood", "1.00", 1),
+        new Grocery("Broccoli", "0.99", 1),
+        new Grocery("Krentenbollen", "1.20", 1),
+        new Grocery("Noten", "2.99", 1),
       ],
     };
   },

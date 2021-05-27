@@ -11,9 +11,7 @@
         @change="updateValue('quantity', $event.target.value)"
       />
     </td>
-    <td>
-      {{ "€" + calculateSubTotal() }}
-    </td>
+    <td>€ {{ value.subTotal }}</td>
   </tr>
 </template>
 
@@ -25,21 +23,14 @@ export default {
       type: Object,
       required: true,
     },
-    // totalCost: {
-    //   type: Number,
-    //   required: true,
-    // },
   },
   methods: {
     updateValue(key, value) {
-      this.$emit("input", { ...this.value, [key]: value });
-    },
-    calculateSubTotal: function() {
-      let subTotal =
-        this.value.price.replace(",", ".") * parseInt(this.value.quantity);
-      subTotal = subTotal.toFixed(2).replace(".", ",");
-      //this.$emit((this.totalCost += subTotal));
-      return subTotal;
+      this.$emit("input", {
+        ...this.value,
+        [key]: value,
+        subTotal: (this.value.price * value).toFixed(2),
+      });
     },
   },
 };

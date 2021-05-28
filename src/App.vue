@@ -21,7 +21,7 @@
           <td>-</td>
           <td></td>
           <td id="totalCost">
-            <b>{{ "€" + totalprice }}</b>
+            <b>{{ "€" + totalPrice }}</b>
           </td>
         </tr>
       </tbody>
@@ -39,21 +39,16 @@ export default {
     TableRow,
   },
 
-  methods: {
-    calculateTotalPrice() {
-      this.totalprice = 0;
-      for(let i = 0; i < this.GroceryList.length; i++) {
-        console.log(this.totalprice += this.GroceryList[i].subTotal);
-      }
-    return this.totalprice;
-    }
-
+  computed: {
+    totalPrice() {
+      return this.GroceryList.map((grocery) => grocery.subTotal)
+        .reduce((total, amount) => total + parseFloat(amount), 0)
+        .toFixed(2);
+    },
   },
-  created() {},
 
   data() {
     return {
-      totalprice: 0,
       GroceryList: [
         new Grocery("Brood", "1.00", 1),
         new Grocery("Broccoli", "0.99", 1),

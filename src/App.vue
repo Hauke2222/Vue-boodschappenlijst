@@ -39,7 +39,16 @@ export default {
     TableRow,
   },
 
-  methods: {},
+  methods: {
+    calculateTotalPrice() {
+      this.totalprice = 0;
+      for(let i = 0; i < this.GroceryList.length; i++) {
+        console.log(this.totalprice += this.GroceryList[i].subTotal);
+      }
+    return this.totalprice;
+    }
+
+  },
   created() {},
 
   data() {
